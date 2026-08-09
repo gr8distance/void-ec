@@ -4,9 +4,10 @@
 - Write **type‑safe** TypeScript. Enable `strict` compiler options.
 - Keep functions **small** and **pure** where possible; side‑effects should be isolated.
 - Follow the existing file naming convention: `camelCase` for variables/functions, `PascalCase` for classes/types, and snake_case for database columns.
+- Use **Bun** as the runtime and package manager. Run commands with `bun` (e.g. `bun install`, `bun dev`, `bunx drizzle-kit generate`).
 
 ## 2. Code Formatting
-- Use **Prettier** with the project’s default config (run `npm run lint -- --fix`).
+- Use **Prettier** with the project’s default config (run `bun run lint -- --fix`).
 - Do not commit generated files (`dist/`, `node_modules/`, `.opencode/`).
 
 ## 3. Git Workflow
@@ -19,7 +20,7 @@
 ## 4. Pull Request Requirements
 - Include a clear **title** and concise **description**.
 - Reference related issue numbers (e.g., `Closes #12`).
-- Verify that the CI pipeline passes (`npm test`, `npm run lint`).
+- Verify that the CI pipeline passes (`bun test`, `bun run lint`).
 - Add **unit / integration tests** for new functionality.
 
 ## 5. Testing
@@ -32,7 +33,7 @@
 
 ## 7. Security
 - Never commit secrets. Use environment variables (`.env`) and add them to `.gitignore`.
-- Review third‑party dependencies for known vulnerabilities (`npm audit`).
+- Review third‑party dependencies for known vulnerabilities (`bun audit`).
 
 **⚠️ EOFはNG** – ファイルの末尾に余分な `EOF` 文字列や空行を残さないでください。
 ---
