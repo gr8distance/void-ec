@@ -1,0 +1,33 @@
+{
+  "name": "void-ec",
+  "version": "0.1.0",
+  "description": "Type-safe e-commerce platform built on the void framework",
+  "type": "module",
+  "scripts": {
+    "dev": "void dev",
+    "build": "void build",
+    "start": "void start",
+    "lint": "void lint",
+    "typecheck": "void typecheck",
+    "test": "void test",
+    "prepare": "void prepare",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "void": "^0.10.12",
+    "drizzle-orm": "^0.45.2",
+    "better-auth": "^1.6.23",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.10",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "app": {
+    "pages": "pages",
+    "routes": "routes",
+    "middleware": "middleware",
+    "client": "client",
+    "assets": "assets",
+    "public": "public"
+  },
+  "db": {
+    "schema": "db/schema.ts",
+    "migrations": "db/migrations"
+  },
+  "auth": {
+    "provider": "better-auth",
+    "secret": "BETTER_AUTH_SECRET",
+    "url": "BETTER_AUTH_URL"
+  },
+  "vite": {
+    "server": {
+      "port": 3000
+    }
+  },
+  "deploy": {
+    "platform": "cloudflare"
+  }
+}
