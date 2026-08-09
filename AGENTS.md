@@ -32,5 +32,6 @@
 - Never commit secrets. Use environment variables (`.env`) and add them to `.gitignore`.
 - Review third‑party dependencies for known vulnerabilities (`npm audit`).
 
+**⚠️ EOFはNG** – ファイルの末尾に余分な `EOF` 文字列や空行を残さないでください。
 ---
 *These guidelines are enforced by the repository’s CI workflow and will be reviewed during code review.*
