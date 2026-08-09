@@ -64,6 +64,7 @@ export const wishlists = sqliteTable("wishlists", {
 export const wishlistItems = sqliteTable("wishlist_items", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   wishlistId: integer("wishlist_id").notNull().references(() => wishlists.id, { onDelete: "cascade" }),
+  variantId: integer("variant_id").references(() => productVariants.id, { onUpdate: "cascade", onDelete: "restrict" }),
   productId: integer("product_id").notNull().references(() => products.id, { onUpdate: "cascade", onDelete: "restrict" }),
   addedAt: integer("added_at", { mode: "timestamp" }).notNull().defaultNow(),
 },
@@ -134,11 +135,11 @@ export const productOptionItems = sqliteTable("product_option_items", {
 // ---------- Reviews ----------
 export const productReviews = sqliteTable("product_reviews", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  productId: integer("product_id").notNull().references(() => products.id, { ondelete: "cascade" }),
-  userId: integer("user_id").notNull().references(() => users.id, { ondelete: "cascade" }),
+  productId: integer("product_id").notNull().references(() => products.id, { onDelete: "cascade" }),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   rating: integer("rating").notNull(), // 1-5
   comment: text("comment"),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
+  created_at: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
 },
   (table) => ({
     productRatingIdx: index("product_rating_idx").on(table.productId, table.rating),
@@ -162,8 +163,9 @@ export const carts = sqliteTable("carts", {
 
 export const cartItems = sqliteTable("cart_items", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  cartId: integer("cart_id").notNull().references(() => carts.id, { ondelete: "cascade" }),
-  productId: integer("product_id").notNull().references(() => products.id, { onUpdate: "cascade", ondelete: "restrict" }),
+  cartId: integer("cart_id").notNull().references(() => carts.id, { onDelete: "cascade" }),
+  productId: integer("product_id").notNull().references(() => products.id, { onUpdate: "cascade", onDelete: "restrict" }),
+  variantId: integer("variant_id").references(() => productVariants.id, { onUpdate: "cascade", onDelete: "restrict" }),
   quantity: integer("quantity").notNull().default(1),
 },
   (table) => ({
@@ -184,8 +186,9 @@ export const orders = sqliteTable("orders", {
 
 export const orderItems = sqliteTable("order_items", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  orderId: integer("order_id").notNull().references(() => orders.id, { ondelete: "cascade" }),
-  productId: integer("product_id").notNull().references(() => products.id, { onUpdate: "cascade", ondelete: "restrict" }),
+  orderId: integer("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  productId: integer("product_id").notNull().references(() => products.id, { onUpdate: "cascade", onDelete: "restrict" }),
+  variantId: integer("variant_id").references(() => productVariants.id, { onUpdate: "cascade", onDelete: "restrict" }),
   quantity: integer("quantity").notNull().default(1),
   priceCents: integer("price_cents").notNull(),
 },
@@ -240,8 +243,8 @@ export const discounts = sqliteTable("discounts", {
 
 export const orderDiscounts = sqliteTable("order_discounts", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  orderId: integer("order_id").notNull().references(() => orders.id, { ondelete: "cascade" }),
-  discountId: integer("discount_id").notNull().references(() => discounts.id, { onUpdate: "cascade", ondelete: "restrict" }),
+  order_id: integer("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  discount_id: integer("discount_id").notNull().references(() => discounts.id, { onUpdate: "cascade", onDelete: "restrict" }),
   amountCents: integer("amount_cents").notNull(),
 },
   (table) => ({
@@ -266,7 +269,7 @@ export const userAddresses = sqliteTable("user_addresses", {
 // ---------- Inventory Logs ----------
 export const inventoryLogs = sqliteTable("inventory_logs", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  productId: integer("product_id").notNull().references(() => products.id, { ondelete: "cascade" }),
+  productId: integer("product_id").notNull().references(() => products.id, { onDelete: "cascade" }),
   change: integer("change").notNull(), // positive or negative
   reason: text("reason"),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
@@ -279,7 +282,7 @@ export const inventoryLogs = sqliteTable("inventory_logs", {
 // ---------- Audit Logs ----------
 export const auditLogs = sqliteTable("audit_logs", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  userId: integer("user_id").references(() => users.id, { ondelete: "set null" }),
+  userId: integer("user_id").references(() => users.id, { onDelete: "set null" }),
   action: text("action").notNull(),
   tableName: text("table_name"),
   recordId: integer("record_id"),
