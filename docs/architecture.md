@@ -13,7 +13,7 @@ This document summarizes the decided technologies, architectural decisions, and 
 
 ### Database
 - **SQLite** — Used in development via Bun's native SQLite
-- **D1 (SQLite)** — Cloudfare managed SQLite for production deployments via void deploy
+- **D1 (SQLite)** — Cloudflare managed SQLite for production deployments via void deploy
 - **Migration Tool**: Drizzle Kit (`drizzle-kit`)
 
 ### Authentication
@@ -81,3 +81,4 @@ See `docs/erd.mermaid` for the full ER diagram.
 3. Audit trail for critical operations
 4. Scalable architecture (Cloudflare Workers edge deployment)
 5. Backup strategy for production data
+
