@@ -16,6 +16,7 @@
 - Ensure the branch is **rebase‑able** onto the latest `main` before opening a PR.
 - **GitHub 操作は `gh` CLI を使用**してください。PR の作成、レビュー、マージ、イシュー管理などはすべて `gh` コマンドで行い、スクリプトや CI からの自動化も同様に `gh` を利用します。
 - **Default branch は `main` に固定**し、`gh` CLI でも変更しないでください。
+- **ロードマップのタスクを進めたら、完了次第コミットしてPRを出すまで進める**こと。PR作成前に `bun test` と `bun run lint` を実行し、CIが通ることを確認する。
 
 ## 4. Pull Request Requirements
 - Include a clear **title** and concise **description**.

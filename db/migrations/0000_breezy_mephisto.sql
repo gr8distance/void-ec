@@ -94,6 +94,7 @@ CREATE TABLE `order_status_history` (
 	FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
+--> statement-breakpoint
 CREATE TABLE `orders` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`user_id` integer NOT NULL,
@@ -179,9 +180,9 @@ CREATE TABLE `products` (
 	`created_at` integer DEFAULT (cast((julianday('now') - 2440587.5)*86400000 as integer)) NOT NULL,
 	`updated_at` integer DEFAULT (cast((julianday('now') - 2440587.5)*86400000 as integer)) NOT NULL,
 	`rating_count` integer DEFAULT 0 NOT NULL,
-	`rating_avg` integer DEFAULT 0 NOT NULL,
+	`rating_avg` real DEFAULT 0 NOT NULL,
 	`deleted_at` integer,
-	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON UPDATE no action ON DELETE no action
+	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
 CREATE TABLE `review_images` (
@@ -227,7 +228,7 @@ CREATE TABLE `users` (
 	`created_at` integer DEFAULT (cast((julianday('now') - 2440587.5)*86400000 as integer)) NOT NULL,
 	`updated_at` integer DEFAULT (cast((julianday('now') - 2440587.5)*86400000 as integer)) NOT NULL,
 	`rating_count` integer DEFAULT 0 NOT NULL,
-	`rating_avg` integer DEFAULT 0 NOT NULL,
+	`rating_avg` real DEFAULT 0 NOT NULL,
 	`deleted_at` integer
 );
 --> statement-breakpoint

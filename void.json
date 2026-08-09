@@ -12,7 +12,7 @@
     "migrations": "db/migrations"
   },
   "auth": {
-    "provider": "better-auth",
+    "providers": ["better-auth"],
     "secret": "BETTER_AUTH_SECRET",
     "url": "BETTER_AUTH_URL"
   },
