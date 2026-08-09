@@ -13,6 +13,8 @@
 - Branch from `main` using a descriptive name: `feat/…`, `fix/…`, `chore/…`.
 - Keep commits **atomic** – one logical change per commit.
 - Ensure the branch is **rebase‑able** onto the latest `main` before opening a PR.
+- **GitHub 操作は `gh` CLI を使用**してください。PR の作成、レビュー、マージ、イシュー管理などはすべて `gh` コマンドで行い、スクリプトや CI からの自動化も同様に `gh` を利用します。
+- **Default branch は `main` に固定**し、`gh` CLI でも変更しないでください。
 
 ## 4. Pull Request Requirements
 - Include a clear **title** and concise **description**.
@@ -32,5 +34,6 @@
 - Never commit secrets. Use environment variables (`.env`) and add them to `.gitignore`.
 - Review third‑party dependencies for known vulnerabilities (`npm audit`).
 
+**⚠️ EOFはNG** – ファイルの末尾に余分な `EOF` 文字列や空行を残さないでください。
 ---
 *These guidelines are enforced by the repository’s CI workflow and will be reviewed during code review.*
