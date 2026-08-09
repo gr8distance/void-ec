@@ -13,6 +13,8 @@
 - Branch from `main` using a descriptive name: `feat/…`, `fix/…`, `chore/…`.
 - Keep commits **atomic** – one logical change per commit.
 - Ensure the branch is **rebase‑able** onto the latest `main` before opening a PR.
+- **GitHub 操作は `gh` CLI を使用**してください。PR の作成、レビュー、マージ、イシュー管理などはすべて `gh` コマンドで行い、スクリプトや CI からの自動化も同様に `gh` を利用します。
+- **Default branch は `main` に固定**し、`gh` CLI でも変更しないでください。
 
 ## 4. Pull Request Requirements
 - Include a clear **title** and concise **description**.
