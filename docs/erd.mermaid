@@ -23,6 +23,7 @@ erDiagram
         int id PK
         int wishlist_id FK
         int product_id FK
+        int variant_id FK
         timestamp added_at
     }
 
@@ -106,6 +107,7 @@ erDiagram
         int id PK
         int cart_id FK
         int product_id FK
+        int variant_id FK
         int quantity
     }
 
@@ -122,6 +124,7 @@ erDiagram
         int id PK
         int order_id FK
         int product_id FK
+        int variant_id FK
         int quantity
         int price_cents
     }
@@ -211,8 +214,8 @@ erDiagram
     users ||--o{ orders : places
     users ||--o{ product_reviews : writes
     users ||--o{ carts : has
-    users ||--o{ payments : makes
-    users ||--o{ shipping_infos : receives
+    
+    
     users ||--o{ audit_logs : logs
 
     categories ||--o{ products : contains
@@ -224,10 +227,10 @@ erDiagram
     product_option_values ||--o{ product_option_items : belongs_to
 
     carts ||--o{ cart_items : contains
-    cart_items ||--o{ products : references
+    cart_items }o--|| products : references
 
     orders ||--o{ order_items : contains
-    order_items ||--o{ products : references
+    order_items }o--|| products : references
     orders ||--o{ payments : paid_by
     orders ||--o{ shipping_infos : shipped_by
     orders ||--o{ order_status_history : history
