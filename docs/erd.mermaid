@@ -210,6 +210,7 @@ erDiagram
     %% Relationships
     users ||--o{ wishlists : has
     wishlists ||--o{ wishlist_items : contains
+    wishlist_items }o--o| product_variants : uses
     users ||--o{ user_addresses : has
     users ||--o{ orders : places
     users ||--o{ product_reviews : writes
@@ -228,9 +229,11 @@ erDiagram
 
     carts ||--o{ cart_items : contains
     cart_items }o--|| products : references
+    cart_items }o--o| product_variants : uses
 
     orders ||--o{ order_items : contains
     order_items }o--|| products : references
+    order_items }o--o| product_variants : uses
     orders ||--o{ payments : paid_by
     orders ||--o{ shipping_infos : shipped_by
     orders ||--o{ order_status_history : history

@@ -139,7 +139,7 @@ export const productReviews = sqliteTable("product_reviews", {
   userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   rating: integer("rating").notNull(), // 1-5
   comment: text("comment"),
-  created_at: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
 },
   (table) => ({
     productRatingIdx: index("product_rating_idx").on(table.productId, table.rating),
@@ -243,8 +243,8 @@ export const discounts = sqliteTable("discounts", {
 
 export const orderDiscounts = sqliteTable("order_discounts", {
   id: integer("id").primaryKey({ autoIncrement: true }),
-  order_id: integer("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
-  discount_id: integer("discount_id").notNull().references(() => discounts.id, { onUpdate: "cascade", onDelete: "restrict" }),
+  orderId: integer("order_id").notNull().references(() => orders.id, { onDelete: "cascade" }),
+  discountId: integer("discount_id").notNull().references(() => discounts.id, { onUpdate: "cascade", onDelete: "restrict" }),
   amountCents: integer("amount_cents").notNull(),
 },
   (table) => ({
